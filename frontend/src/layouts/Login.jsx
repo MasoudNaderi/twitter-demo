@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import toastService from "../utils/toastService";
-import Avatar from "../components/Avatar";
 const { showSuccess, showError } = toastService;
 const defaultAvatar = "../../public/assets/defaultAvatar.jpeg";
 

@@ -4,6 +4,7 @@ import Avatar from "../components/Avatar";
 const Header = ({ user, setUser }) => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
+
   const toggleMenu = () => setOpen(!open);
 
   useEffect(() => {
