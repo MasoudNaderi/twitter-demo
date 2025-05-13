@@ -7,7 +7,7 @@ dayjs.extend(relativeTime);
 const Post = ({ post }) => {
   return (
     <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-      <div className=" flex items-center space-x-3 mb-4">
+      <div className=" flex items-center space-x-3 mb-2">
         <Avatar
           src={post.author.avatar}
           className={` w-8 h-8 rounded-full aspect-square `}
@@ -21,6 +21,9 @@ const Post = ({ post }) => {
         </div>
       </div>
       <p className="text-gray-300">{post.content}</p>
+      {post.img && (
+        <img src={post.img} alt={`${post.author.name} post`} className="mt-2" />
+      )}
     </div>
   );
 };

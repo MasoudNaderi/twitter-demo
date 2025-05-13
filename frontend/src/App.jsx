@@ -14,6 +14,7 @@ function App() {
   );
   const [data, setData] = useState([]);
   const [newPost, setNewPost] = useState("");
+  const [postMedia, setPostMedia] = useState(null);
 
   const { name, username, avatar } = user ?? {};
 
@@ -38,6 +39,7 @@ function App() {
         avatar,
       },
       content: newPost,
+      img: postMedia,
       timestamp: Date.now(),
     };
     setData((prev) => [newEntry, ...prev]);
@@ -50,7 +52,9 @@ function App() {
       body: JSON.stringify(newEntry),
     });
     setNewPost("");
+    setPostMedia(null);
   };
+  console.log(data[0]);
 
   return (
     <>
@@ -65,6 +69,8 @@ function App() {
               newPost={newPost}
               setNewPost={setNewPost}
               handlePost={handlePost}
+              postMedia={postMedia}
+              setPostMedia={setPostMedia}
             />
             <PostFeed>
               {data.map((post) => (

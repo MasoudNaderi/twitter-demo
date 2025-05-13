@@ -21,7 +21,7 @@ const Login = ({ setUser }) => {
   };
 
   const handleAvatarUpload = async (e) => {
-    return new Promise((res, rej) => {
+    return new Promise((res, _rej) => {
       const file = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -87,9 +87,6 @@ const Login = ({ setUser }) => {
           <label className="block text-sm font-medium mb-1">
             Choose Avatar
           </label>
-          <div className="flex space-x-2 mb-2">
-            {/* Choose between 2 default avatar */}
-          </div>
         </div>
 
         <div>
