@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import CreatePost from "./components/CreatePost";
-import PostFeed from "./layouts/PostFeed";
 import Login from "./layouts/Login";
 import Post from "./components/Post";
 import { ToastContainer } from "react-toastify";
@@ -16,9 +15,8 @@ function App() {
   const [newPost, setNewPost] = useState("");
   const [postMedia, setPostMedia] = useState(null);
 
-  const { name, username, avatar } = user ?? {};
-
   user && localStorage.setItem("user", JSON.stringify(user));
+  const { name, username, avatar } = user ?? {};
 
   useEffect(() => {
     async function fetchPosts() {
@@ -28,7 +26,7 @@ function App() {
     }
 
     fetchPosts();
-  }, []);
+  }, [data]);
 
   const handlePost = async () => {
     const newEntry = {
@@ -41,6 +39,8 @@ function App() {
       content: newPost,
       img: postMedia,
       timestamp: Date.now(),
+      likedBy: [],
+      dislikedBy: [],
     };
     setData((prev) => [newEntry, ...prev]);
 
@@ -54,7 +54,6 @@ function App() {
     setNewPost("");
     setPostMedia(null);
   };
-  console.log(data[0]);
 
   return (
     <>
@@ -72,11 +71,11 @@ function App() {
               postMedia={postMedia}
               setPostMedia={setPostMedia}
             />
-            <PostFeed>
+            <div className="space-y-4">
               {data.map((post) => (
-                <Post key={post.id} post={post} />
+                <Post key={post.id} user={user} post={post} />
               ))}
-            </PostFeed>
+            </div>
           </div>
         </div>
       )}

@@ -26,7 +26,6 @@ const Login = ({ setUser }) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log(reader.result);
         setForm((prev) => ({ ...prev, avatar: reader.result }));
         res();
       };

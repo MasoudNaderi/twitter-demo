@@ -26,7 +26,6 @@ const CreatePost = ({
       reader.readAsDataURL(file);
       reader.onload = () => {
         setPostMedia(reader.result);
-        console.log(reader.result);
         res();
       };
     });
